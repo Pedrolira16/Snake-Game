@@ -1,0 +1,4 @@
+Difculdades encontradas: 
+- depois de tentar de diversas formas para de deixar a minhoca crescer quando não comia foi percebido que era um problema na tela que deveria ser reiniciada e não na lista enacadeada.
+- Comidas nascendo no canto da tela.
+- Snake não exatamente morrendo apos se auto se enconstar.
