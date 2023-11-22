@@ -114,28 +114,34 @@ int main()
         if (keyhit() && !lostGame)
         {
           int key = readch();
+          int new_dx = snake.dx;
+          int new_dy = snake.dy;
 
           switch (key)
           {
           case 119: // w
-            snake.dx = 0;
-            snake.dy = -1;
+            new_dx = 0;
+            new_dy = -1;
             break;
           case 97: // a
-            snake.dx = -1;
-            snake.dy = 0;
+            new_dx = -1;
+            new_dy = 0;
             break;
           case 115: // s
-            snake.dx = 0;
-            snake.dy = 1;
+            new_dx = 0;
+            new_dy = 1;
             break;
           case 100: // d
-            snake.dx = 1;
-            snake.dy = 0;
+            new_dx = 1;
+            new_dy = 0;
             break;
           case 27: // ESC
             startGame = false;
             break;
+          }
+          if (!(new_dx == -snake.dx && new_dy == -snake.dy)) {
+            snake.dx = new_dx;
+            snake.dy = new_dy;
           }
         }
 
