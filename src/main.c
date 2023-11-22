@@ -45,10 +45,11 @@ int main()
 
   printf("Escolha uma dificuldade: \n");
   printf("1 - Fácil (1.0x)\n");
-  printf("2 - Médio (1.5x)\n");
-  printf("3 - Difícil (1.7x)\n");
-  printf("4 - Insano (2.0x)\n");
-  printf("5 - Sair\n");
+  printf("2 - Médio (1.7x)\n");
+  printf("3 - Difícil (2.0x)\n");
+  printf("4 - Insano (2.4x)\n");
+  printf("5 - Impossível (2.9x)\n");
+  printf("6 - Sair\n");
   printf("Pressione a tecla correspondente.\n");
 
   while (1)
@@ -64,18 +65,23 @@ int main()
         startGame = true;
         break;
       case '2':
-        snakeSpeed = 200000;
-        startGame = true;
-        break;
-      case '3':
         snakeSpeed = 170000;
         startGame = true;
         break;
-      case '4':
+      case '3':
         snakeSpeed = 140000;
         startGame = true;
         break;
+      case '4':
+        snakeSpeed = 100000;
+        startGame = true;
+        break;
       case '5':
+        snakeSpeed = 50000;
+        startGame = true;
+        break;
+      
+      case '6':
         keyboardDestroy();
         return 0;
       }
