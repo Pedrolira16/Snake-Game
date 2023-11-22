@@ -129,8 +129,8 @@ void moveSnake(Snake *snake, int dx, int dy, Food *food) {
 
 void generateFoodInRandomLocal(Food *food)
 {
-  food->x = rand() % (MAXX - 3) + 1;
-  food->y = rand() % (MAXY - 3) + 1;
+  food->x = rand() % (MAXX - 3) + 2;
+  food->y = rand() % (MAXY - 2) + 2;
 }
 
 void displayGame(Snake *snake, Food *food)
