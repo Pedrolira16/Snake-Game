@@ -101,7 +101,7 @@ int main()
       snake.head->x = 10;
       snake.head->y = 10;
       snake.head->next = NULL;
-       
+
       snake.dx = 1;
       snake.dy = 0;
 
@@ -170,9 +170,12 @@ int main()
                 snake.head->x = 10;
                 snake.head->y = 10;
                 snake.head->next = NULL;
-    
+
                 snake.dx = 1;
                 snake.dy = 0;
+
+                generateFoodInRandomLocal(&food);
+                ateFood = false;
                 break;
               case 'n':
                 startGame = false;
