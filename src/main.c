@@ -18,7 +18,6 @@ typedef struct Segment
   int x;
   int y;
   struct Segment *next;
-  struct Segment *prev;
 } Segment;
 
 typedef struct Snake
@@ -102,7 +101,7 @@ int main()
       snake.head->x = 10;
       snake.head->y = 10;
       snake.head->next = NULL;
-      snake.head->prev = NULL;
+       
       snake.dx = 1;
       snake.dy = 0;
 
@@ -171,7 +170,7 @@ int main()
                 snake.head->x = 10;
                 snake.head->y = 10;
                 snake.head->next = NULL;
-                snake.head->prev = NULL;
+    
                 snake.dx = 1;
                 snake.dy = 0;
                 break;
@@ -197,13 +196,7 @@ void moveSnake(Snake *snake, int dx, int dy, Food *food)
   Segment *newHead = (Segment *)malloc(sizeof(Segment));
   newHead->x = snake->head->x + dx;
   newHead->y = snake->head->y + dy;
-  newHead->prev = NULL;
   newHead->next = snake->head;
-
-  if (snake->head != NULL)
-  {
-    snake->head->prev = newHead;
-  }
 
   snake->head = newHead;
 
@@ -214,8 +207,8 @@ void moveSnake(Snake *snake, int dx, int dy, Food *food)
   }
   else
   {
-    Segment *current = snake->head;
-    Segment *prevSegment = NULL;
+    Segment *current = snake->head->next;
+    Segment *prevSegment = snake->head;
 
     while (current->next != NULL)
     {
@@ -223,10 +216,7 @@ void moveSnake(Snake *snake, int dx, int dy, Food *food)
       current = current->next;
     }
 
-    if (prevSegment != NULL)
-    {
-      prevSegment->next = NULL;
-    }
+    prevSegment->next = NULL;
     free(current);
   }
 }
