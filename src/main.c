@@ -9,6 +9,7 @@
 
 bool ateFood = false;
 bool startGame = false;
+bool lostGame = false;
 int snakeSpeed = 250000;
 
 FILE *fptr;
@@ -110,7 +111,7 @@ int main()
       while (startGame)
       {
 
-        if (keyhit())
+        if (keyhit() && !lostGame)
         {
           int key = readch();
 
@@ -144,6 +145,7 @@ int main()
 
         if (hasItCollided(&snake))
         {
+          lostGame = true;
           screenInit(0);
           fptr = fopen("ascii.txt", "r");
           char text = fgetc(fptr);
@@ -176,12 +178,17 @@ int main()
 
                 generateFoodInRandomLocal(&food);
                 ateFood = false;
+                lostGame = false;
                 break;
               case 'n':
+                lostGame = false;
                 startGame = false;
                 break;
               }
-              break;
+              if (lostGame == false)
+              {
+                break;
+              }
             }
           }
         }
