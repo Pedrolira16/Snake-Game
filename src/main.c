@@ -10,7 +10,8 @@
 bool ateFood = false;
 bool startGame = false;
 int snakeSpeed = 250000;
-int page = 1;
+
+FILE *fptr;
 
 typedef struct Segment
 {
@@ -80,7 +81,7 @@ int main()
         snakeSpeed = 50000;
         startGame = true;
         break;
-      
+
       case '6':
         keyboardDestroy();
         return 0;
@@ -107,30 +108,33 @@ int main()
 
       generateFoodInRandomLocal(&food);
 
-      while (1)
+      while (startGame)
       {
 
         if (keyhit())
         {
-          char key = readch();
+          int key = readch();
 
           switch (key)
           {
-          case 'w':
+          case 119: // w
             snake.dx = 0;
             snake.dy = -1;
             break;
-          case 'a':
+          case 97: // a
             snake.dx = -1;
             snake.dy = 0;
             break;
-          case 's':
+          case 115: // s
             snake.dx = 0;
             snake.dy = 1;
             break;
-          case 'd':
+          case 100: // d
             snake.dx = 1;
             snake.dy = 0;
+            break;
+          case 27: // ESC
+            startGame = false;
             break;
           }
         }
@@ -141,13 +145,48 @@ int main()
 
         if (hasItCollided(&snake))
         {
-          break;
+          screenInit(0);
+          fptr = fopen("ascii.txt", "r");
+          char text = fgetc(fptr);
+          while (text != EOF)
+          {
+            printf("%c", text);
+            text = fgetc(fptr);
+          }
+          fclose(fptr);
+
+          printf("\n\n Você deseja continuar jogando? (s/n)\n");
+
+          while (1)
+          {
+            if (keyhit())
+            {
+
+              char key = readch();
+              screenInit(0);
+              switch (key)
+              {
+              case 's':
+                snake.head = (Segment *)malloc(sizeof(Segment));
+                snake.head->x = 10;
+                snake.head->y = 10;
+                snake.head->next = NULL;
+                snake.head->prev = NULL;
+                snake.dx = 1;
+                snake.dy = 0;
+                break;
+              case 'n':
+                startGame = false;
+                break;
+              }
+              break;
+            }
+          }
         }
       }
 
       screenDestroy();
       keyboardDestroy();
-
       return 0;
     }
   }
@@ -200,7 +239,10 @@ void generateFoodInRandomLocal(Food *food)
 
 void displayGame(Snake *snake, Food *food)
 {
+
   screenInit(1);
+  printf("  W - Frente   S - Trás   A - Esquerda   D - Direita   ESC - Sair\n");
+
   Segment *segment = snake->head;
   while (segment != NULL)
   {
