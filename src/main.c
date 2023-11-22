@@ -11,6 +11,7 @@ bool ateFood = false;
 bool startGame = false;
 bool lostGame = false;
 int snakeSpeed = 250000;
+int cont = 0;
 
 FILE *fptr;
 
@@ -178,6 +179,8 @@ int main()
                 generateFoodInRandomLocal(&food);
                 ateFood = false;
                 lostGame = false;
+
+                cont = 0;
                 break;
               case 'n':
                 lostGame = false;
@@ -200,6 +203,7 @@ int main()
   }
 }
 
+
 void moveSnake(Snake *snake, int dx, int dy, Food *food)
 {
   Segment *newHead = (Segment *)malloc(sizeof(Segment));
@@ -213,6 +217,7 @@ void moveSnake(Snake *snake, int dx, int dy, Food *food)
   {
     ateFood = true;
     generateFoodInRandomLocal(food);
+    cont ++;
   }
   else
   {
@@ -240,7 +245,7 @@ void displayGame(Snake *snake, Food *food)
 {
 
   screenInit(1);
-  printf("  W - Frente   S - Trás   A - Esquerda   D - Direita   ESC - Sair\n");
+  printf("  W - Frente   S - Trás   A - Esquerda   D - Direita   ESC - Sair\t Comida: %d", cont);
 
   Segment *segment = snake->head;
   while (segment != NULL)
