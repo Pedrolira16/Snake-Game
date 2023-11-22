@@ -82,7 +82,7 @@ int main()
 
     moveSnake(&snake, snake.dx, snake.dy, &food);
     displayGame(&snake, &food);
-    usleep(250000);
+    usleep(150000);
 
     if (hasItCollided(&snake)) {
       break;
