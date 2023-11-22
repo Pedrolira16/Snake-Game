@@ -151,7 +151,7 @@ void displayGame(Snake *snake, Food *food)
 
 bool hasItCollided(Snake *snake)
 {
-  if (snake->head->x < 1 || snake->head->x > MAXX - 2 || snake->head->y < 1 || snake->head->y > MAXY - 2) {
+  if (snake->head->x <= 1 || snake->head->x > MAXX - 2 || snake->head->y <= 1 || snake->head->y > MAXY - 1) {
     return true;
   }
 
