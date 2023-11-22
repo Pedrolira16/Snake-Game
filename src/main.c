@@ -93,7 +93,6 @@ int main()
 
       srand(time(NULL));
       screenInit(1);
-      timerInit(100);
 
       Snake snake;
       Food food;
@@ -103,8 +102,8 @@ int main()
       snake.head->y = 10;
       snake.head->next = NULL;
 
-      snake.dx = 1;
-      snake.dy = 0;
+      snake.dx = 1; // -1 esquerda, 1 direita
+      snake.dy = 0; // -1 cima, 1 baixo
 
       generateFoodInRandomLocal(&food);
 
