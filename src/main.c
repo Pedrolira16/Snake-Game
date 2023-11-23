@@ -14,7 +14,10 @@
 #define ORANGE  "\x1b[38;5;208m"
 #define RED     "\x1b[31m"
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 bool ateFood = false;
 bool startGame = false;
 bool lostGame = false;
