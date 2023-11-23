@@ -7,6 +7,14 @@
 #include <unistd.h>
 #include <time.h>
 
+#define RESET   "\x1b[0m"
+#define BLUE    "\033[1;36m"
+#define GREEN   "\x1b[32m"
+#define YELLOW  "\x1b[33m"
+#define ORANGE  "\x1b[38;5;208m"
+#define RED     "\x1b[31m"
+
+
 bool ateFood = false;
 bool startGame = false;
 bool lostGame = false;
@@ -45,12 +53,12 @@ int main()
   screenInit(0);
 
   printf("Escolha uma dificuldade: \n");
-  printf("1 - Super fácil (1.0x)\n");
-  printf("2 - Fácil (1.7x)\n");
-  printf("3 - Médio (2.0x)\n");
-  printf("4 - Difícil (2.4x)\n");
-  printf("5 - Impossível (2.9x)\n");
-  printf("6 - Sair\n");
+  printf(BLUE "1 - Super fácil (1.0x) \n");
+  printf(GREEN "2 - Fácil (1.7x) \n");
+  printf(YELLOW "3 - Médio (2.0x) \n");
+  printf(ORANGE "4 - Difícil (2.4x) \n");
+  printf(RED "5 - Impossível (2.9x) \n");
+  printf(RESET "6 - Sair\n");
   printf("Pressione a tecla correspondente.\n");
 
   while (1)
