@@ -21,13 +21,11 @@ instale na sua maquina os pacotes Make e gcc com os seguintes comandos:
  sudo apt install gcc
 
 para rodar o jogo:
+   make
   ./snake_game
 
 importante falar que você deve ter as seguintes bibliotecas 
 
-  #include "keyboard.h"
-  #include "screen.h"
-  #include "timer.h"
   #include <stdlib.h>
   #include <stdbool.h>
   #include <stdio.h>
